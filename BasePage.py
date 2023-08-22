@@ -59,3 +59,9 @@ class Buy_me_site():
         element2 = self.driver.find_element(By.XPATH,value="//input[@placeholder='שם שולח המתנה']")
         name = element2.get_attribute('value')
         assert name == 'kfir'
+
+    def dots(self):
+        x= self.driver.find_element(By.XPATH,value="//div[@class='bounce1']")
+        print(x.size['width'])
+
+
