@@ -1,6 +1,8 @@
 import unittest
 from selenium import webdriver
-from BasePage import Buy_me_site
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from Buy_Me import Buy_me_site
 import allure
 from allure_commons.types import AttachmentType
 import json
@@ -13,6 +15,10 @@ def screenshot(self):
                   body=self.driver.get_screenshot_as_png(), attachment_type=AttachmentType.PNG)
 class TestSignUp(unittest.TestCase):
     def setUp(self):
+        chrome_options = Options()
+        chrome_options.binary_location = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+        service = Service("/Users/kfirzand/Downloads/chromedriver-mac-arm64/chromedriver")
+        driver = webdriver.Chrome(service=service, options=chrome_options)
         self.driver = webdriver.Chrome()
         data =json_setup()
         self.driver.get(data['url'])
